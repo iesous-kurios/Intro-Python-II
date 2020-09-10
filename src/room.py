@@ -1,6 +1,7 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
 
+
 class Room:
     """Base class for all Rooms.
 
@@ -19,5 +20,6 @@ class Room:
 
     def __repr__(self):
 
-        """Return the class name and dict of instance variables and their values when printing the instance."""
+        """Return the class name and dict of instance variables
+        and their values when printing the instance."""
         return f'{self.__class__} {self.__dict__}'

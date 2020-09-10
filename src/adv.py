@@ -52,38 +52,59 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-directions = ['north', 'east', 'south', 'west']
+directions = ['north', 'east', 'south', 'west', 'q']
 
-player = Player('J the Old', room['outside'])
+input_name = input("Welcome Adventurer!  Please enter your name:")
+
+print('**********')
+
+player = Player(input_name, room['outside'])
 
 while True:
 
+    print('****************')
     print('You are currently in', player.current_room.name)
     print('................')
     print(player.current_room.description)
+    print('****************')
 
+    print('\n Options: North, East, South, West (or press q to quit the game)')
     next_dir = input(f'{player.name}... If ye be brave enough; type in your next direction (or if ye be yellow; press q to quit game):\n ')
-    
+
+    if next_dir in directions:
+        pass
+    else:
+        print('Please enter north, east, south, or west')
+
+        pass
 
     if next_dir == 'north':
+        print('**********')
         if player.current_room.n_to:
             player.current_room = player.current_room.n_to
         else:
+            print('**********')
             print("Can't go that way, please try again brave adventurer!")
     if next_dir == 'east':
+        print('**********')
         if player.current_room.e_to:
             player.current_room = player.current_room.s_to
         else:
+            print('**********')
             print("Not a good idea, try again!")
     if next_dir == 'south':
+        print('**********')
         if player.current_room.s_to:
             player.current_room = player.current_room.e_to
         else:
+            print('**********')
             print("There's nothing in that direction, try again!")
     if next_dir == 'west':
+        print('**********')
         if player.current_room.w_to:
             player.current_room = player.current_room.w_to
         else:
+            print('**********')
             print("Ran into a wall... is that fun for you?")
 
     if next_dir == 'q':
