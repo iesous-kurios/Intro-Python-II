@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 # change for first pull reqeust
@@ -52,8 +52,39 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-def run_game():
+directions = ['north', 'east', 'south', 'west']
 
-    name = input('Please enter your name:')
+player = Player('J the Old', room['outside'])
 
-    print('Hello ', name)
+while True:
+
+    print('You are currently in', player.current_room.name)
+    print('................')
+    print(player.current_room.description)
+
+    next_dir = input(f'{player.name}... If ye be brave enough; type in your next direction (or if ye be yellow; press q to quit game):\n ')
+    
+
+    if next_dir == 'north':
+        if player.current_room.n_to:
+            player.current_room = player.current_room.n_to
+        else:
+            print("Can't go that way, please try again brave adventurer!")
+    if next_dir == 'east':
+        if player.current_room.e_to:
+            player.current_room = player.current_room.s_to
+        else:
+            print("Not a good idea, try again!")
+    if next_dir == 'south':
+        if player.current_room.s_to:
+            player.current_room = player.current_room.e_to
+        else:
+            print("There's nothing in that direction, try again!")
+    if next_dir == 'west':
+        if player.current_room.w_to:
+            player.current_room = player.current_room.w_to
+        else:
+            print("Ran into a wall... is that fun for you?")
+
+    if next_dir == 'q':
+        exit(0)
