@@ -17,18 +17,6 @@ class Room:
         self.e_to = None
         self.w_to = None
 
-    def get_direction(self, direction):
-        if direction == 'north':
-            return self.n_to
-        elif direction == 'east':
-            return self.e_to
-        elif direction == 'south':
-            return self.s_to
-        elif direction == 'west':
-            return self.w_to
-        else:
-            return None
-
     def __repr__(self):
 
         """Return the class name and dict of instance variables and their values when printing the instance."""
